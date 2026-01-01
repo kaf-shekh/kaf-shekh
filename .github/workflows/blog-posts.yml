@@ -13,6 +13,6 @@ jobs:
       - uses: gautamkrishnar/blog-post-workflow@master
         with:
           feed_list: |
-                    https://dev.to/feed/_kafeel_ahmad
+                    https://dev.to/feed/kafeel-ahmad
                     https://medium.com/feed/@kafeel-ahmad
           max_post_count: 10
