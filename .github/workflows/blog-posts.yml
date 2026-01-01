@@ -1,21 +1,27 @@
 name: Latest blog posts
 
 on:
-  schedule:
-    - cron: "0 */6 * * *"   # every 6 hours
   workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
 
 jobs:
-  update-readme-with-blog:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: JasonEtco/rss-to-readme@v1
         with:
-          feed_list: |
-            https://dev.to/feed/kafeel-ahmad
+          feed-url: |
+            https://dev.to/feed/kafeel_ahmad
             https://medium.com/feed/@kafeel-ahmad
+          readme-section: BLOG-POST-LIST
+          max: 5
+          template: "* [{{ title }}]({{ link }})"
+          path: README.md
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
